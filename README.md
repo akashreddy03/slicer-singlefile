@@ -1,3 +1,25 @@
+# Slicer Katana (Single-File & Encrypted Fork)
+
+This fork of Slicer Katana introduces custom post-processing pipelines that bundle the entire application into a **single, self-contained HTML file** (`dist/index.html`). It is fully optimized to run offline—including directly from the `file:///` protocol—while enforcing strict zero-network runtime policies and client-side password protection.
+
+## ✨ Key Enhancements in This Fork
+
+* **Single-File Bundling (`inline-assets.js`)**: Automatically discovers, downloads, packs, and compresses (Gzip Level 9) all application assets, manifests, and classes into a single Base64 payload embedded directly in `index.html`. Includes an in-memory asset interceptor with zero-network fallbacks.
+* **Runtime Network Lockdown (`network-lockdown.js`)**: Hard-blocks outgoing `fetch`, `XMLHttpRequests (XHR)`, WebSockets, and tracking beacons to ensure complete local execution safety[cite: 2].
+* **Client-Side Encryption (`compress-encrypt.js`)**: Secures the bundled payload using **AES-256-GCM** (derived via PBKDF2 with 100,000 iterations)[cite: 6]. Users must enter a password through a lightweight login bootstrap stub before the application decompresses and renders in memory[cite: 6].
+
+---
+
+## 🔐 Default Security Configuration
+
+This fork comes with a pre-configured default password for the encrypted bundle:
+
+* **Default Password**: `bundle-password`[cite: 6]
+* **Where to Change It**: Open `compress-encrypt.js` and update the `USER_PASSWORD` constant[cite: 6]:
+  ```javascript
+  const USER_PASSWORD = "your-secure-password-here"; // <--- CHANGE THIS
+
+
 # slicer [![](https://img.shields.io/badge/documentation-here-red)](https://docs.slicer.run) [![](https://img.shields.io/badge/translate-here-red?logo=crowdin)](https://crowdin.com/project/slicer)
 
 A modern Java reverse engineering tool for the web.
