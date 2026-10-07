@@ -1,7 +1,7 @@
 import type { SlurpResult } from "$lib/reader/hprof";
 import { createDefaultWorkerPool } from "$lib/worker";
 import type { MappingSet } from "$lib/workspace/analysis/mapping/data";
-import ReaderWorker from "./worker?worker";
+import ReaderWorker from "./worker?worker&inline";
 
 export interface Reader {
     hex(bytes: Uint8Array, rowBytes: number): Promise<string>;

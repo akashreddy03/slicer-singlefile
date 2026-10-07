@@ -4,11 +4,11 @@ import type { UTF8Entry } from "@katana-project/asm/pool";
 import { ConstantType } from "@katana-project/asm/spec";
 import type { Disassembler } from "./";
 import { createFromWorker } from "./worker";
-import CFRWorker from "./worker/cfr?worker";
-import JASMWorker from "./worker/jasm?worker";
-import ProcyonWorker from "./worker/procyon?worker";
-import SlicerWorker from "./worker/slicer?worker";
-import VFWorker from "./worker/vf?worker";
+import CFRWorker from "./worker/cfr?worker&inline";
+import JASMWorker from "./worker/jasm?worker&inline";
+import ProcyonWorker from "./worker/procyon?worker&inline";
+import SlicerWorker from "./worker/slicer?worker&inline";
+import VFWorker from "./worker/vf?worker&inline";
 
 export const cfr: Disassembler = createFromWorker(
     {

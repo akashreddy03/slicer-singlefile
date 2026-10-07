@@ -3,4 +3,10 @@ import { mount } from "svelte";
 import App from "./app.svelte";
 import "./main.css";
 
-export default mount(App, { target: document.getElementById("app")! });
+const appElement = document.getElementById("app");
+
+if (appElement) {
+    mount(App, { target: appElement });
+} else {
+    console.error("Fatal: #app element not found in the DOM.");
+}

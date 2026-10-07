@@ -10,7 +10,7 @@ import { FLAG_SKIP_ATTR_PARSE, FLAG_SLICE_BUFFER } from "@katana-project/asm";
 import { get } from "svelte/store";
 import { QueryType, SearchMode, type SearchQuery, type SearchResult } from "./search";
 import type { AnalysisWorker } from "./worker";
-import Worker from "./worker?worker";
+import Worker from "./worker?worker&inline";
 
 export * from "./types";
 
